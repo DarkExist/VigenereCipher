@@ -1,0 +1,155 @@
+﻿@page "/modifiedvigenere"
+@using VigenereCipherApp;
+@using VigenereCipherApp.VigenereCiphers;
+@inject ModifiedVigenereCipher ModifiedVigenereCipher;
+@inject SaveFile SaveFile;
+@inject ReadFile ReadFile;
+
+
+<body>
+	<main>
+		<div class="vigenereInfo">
+			<img class="vigenerePhoto" src="/assets/Vigenere.png" />
+			<h5>@text</h5>
+		</div>
+
+		<div class="cipherBlock">
+
+			<label id="messageLabel" class="column1">Message</label>
+			<div id="messageTxt" class="column2">
+				<textarea id="messageTxtArea"  @bind=@message @onkeydown=OnChangeText>asdasd</textarea>
+				<img id="paperClip" @onclick=OnPaperClipClick src ="/assets/paperClip128.png" />
+			</div>
+
+			<label id="keyLabel" class="column1">Key</label>
+
+			<textarea id="keyTxtArea" class="column2" @bind=@key @onkeydown=OnChangeText></textarea>
+
+
+			<label id="resultLabel" class="column1 @(hideFlag ? "hide" : "")">Result</label>
+
+			<textarea id="resultTxtArea" class="column2 @(hideFlag ? "hide" : "")" @bind=@result readonly></textarea>
+			<btn id="doCryptDecrypt"
+				 class="column2 crypt @(hideFlag ? "" : "hide")"
+				 @onclick=OnCryptDecryptBtnClick>
+				@(cryptMode ? "Encrypt" : "Decrypt")
+			</btn>
+
+			<btn id="changeMode" class="column1" @onclick=OnChangeModeBtnClick>@(cryptMode ? "Decryption" : "Encryption")</btn>
+
+			<label id="txtCheckbox" class="column2"><input type="checkbox" @bind=saveToTxtFlag>Save to txt</label>
+		</div>
+	</main>
+</body>
+
+<div class="modal @(errorFlag ? "show" : "hide")">
+	<div class="modalContent">
+		<h5>@modalErrorText</h5>
+		<span class="close" @onclick="HideModal"></span>
+	</div>
+</div>
+
+
+@code {
+	private bool cryptMode = true;
+	private string message = "", key = "", result = "", text = "1337", modalErrorText = "asdasddsa\nasdasd\nasdasdads";
+	private bool hideFlag = true;
+	private bool saveToTxtFlag = true;
+	private bool errorFlag = false;
+	protected async override Task OnInitializedAsync()
+	{
+		try
+		{
+			using var stream =
+				await FileSystem.OpenAppPackageFileAsync("wwwroot/assets/VigenereText.txt");
+			using var reader = new StreamReader(stream);
+
+			text = await reader.ReadToEndAsync();
+		}
+		catch (Exception)
+		{
+			throw;
+		}
+		base.OnInitialized();
+	}
+
+	private async void OnCryptDecryptBtnClick()
+	{
+		if (saveToTxtFlag)
+			await SaveToTxtFileAsync(result);
+
+		if (cryptMode)
+			result = EncryptMessage(message, key);
+		else
+			result = DecryptMessage(message, key);
+		StateHasChanged();
+		hideFlag = false;
+	}
+
+	private void OnChangeModeBtnClick()
+	{
+		ChangeMode();
+	}
+
+	private void ChangeMode()
+	{
+		cryptMode = !cryptMode;
+		OnChangeText(); //to refresh result
+		StateHasChanged();
+	}
+
+	private void OnChangeText()
+	{
+		hideFlag = true;
+		StateHasChanged();
+	}
+
+	private string EncryptMessage(string message, string key)
+	{
+		return ModifiedVigenereCipher.Encrypt(message, key);
+	}
+
+	private string DecryptMessage(string message, string key)
+	{
+		return ModifiedVigenereCipher.Decrypt(message, key);
+	}
+
+	private async Task SaveToTxtFileAsync(string message)
+	{
+		try
+		{
+			await SaveFile.SaveToTxtAsync(message);
+		}
+		catch (Exception ex)
+		{
+			ShowErrorModal(ex.Message);
+		}
+	}
+
+	private async void OnPaperClipClick()
+	{
+		var result = await FilePicker.Default.PickAsync();
+		if (result != null)
+		{
+			try
+			{
+				string filePath = result.FullPath;
+				message = ReadFile.ReadFromTxt(filePath);
+			} catch	(Exception)
+			{
+			}
+		}
+		StateHasChanged();
+	}
+
+	private void ShowErrorModal(string errorMessage)
+	{
+		modalErrorText = errorMessage;
+		errorFlag = true;
+	}
+
+	private void HideModal()
+	{
+		errorFlag = false;
+	}
+}

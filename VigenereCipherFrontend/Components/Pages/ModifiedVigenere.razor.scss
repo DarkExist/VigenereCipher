@@ -1,0 +1,174 @@
+﻿.hide {
+    display: none !important;
+}
+
+textarea {
+    resize: none;
+}
+
+.noselect, btn, label {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.modal {
+    .show {
+    }
+
+    z-index: 10000;
+    background-color: black;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    width: 400px;
+    height: 4000px;
+}
+
+
+
+body {
+    height: 100%;
+    width: 100%;
+
+
+    main {
+        height: 100%;
+        width: 100%;
+        padding: 40px 3rem 0 3rem;
+
+        .vigenereInfo {
+            display: flex;
+            padding-top: 1rem;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+
+
+            img {
+                &.vigenerePhoto {
+                    width: 30vmin;
+                    height: 40vmin;
+                }
+            }
+
+            h5 {
+                font-size: 16px;
+            }
+        }
+
+        .cipherBlock {
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            grid-template-rows: repeat(4, auto);
+            gap: 1rem;
+
+            .column1 {
+                display: flex;
+                align-items: center;
+                grid-column: 1;
+                font-size: 1.75rem;
+                padding-right: 3rem;
+            }
+
+            .column2 {
+                display: flex;
+                max-height: 3rem;
+                min-height: 3rem;
+                font-size: 1rem;
+                grid-column: 2;
+
+            }
+
+            #messageTxt {
+                width: 100%;
+                display: flex;
+                position: relative;
+
+
+                textarea {
+                    &#messageTxtArea {
+                        padding-right: 3rem;
+                        width: 100%;
+                    }
+                }
+
+                img {
+                    &#paperClip {
+                        position: absolute;
+                        top: 0.5rem;
+                        right: 1rem;
+                        width: 2rem;
+                        height: 2rem;
+                        cursor: pointer; /* Указатель для клика */
+                    }
+                }
+            }
+
+            label {
+
+                &#txtCheckbox {
+                    gap: 0.8rem;
+                    font-size: 1.2rem;
+                    align-items: center;
+                    display: flex;
+                    margin-left: auto;
+                    margin-right: 1rem;
+                    padding: 0.75rem;
+
+                    input {
+                        align-items: center;
+                    }
+                }
+            }
+
+            btn {
+                &#doCryptDecrypt {
+                    align-content: center;
+                    display: flex;
+                    justify-content: center;
+                    margin-left: auto;
+                    padding: 0 0.75rem 0 0.75rem;
+                    border-radius: 1rem;
+                    font-size: 2rem;
+                    background-color: darkgray;
+                    margin-right: 1rem;
+
+                    &:hover {
+                        cursor: pointer;
+                        transition-delay: 0s;
+                        filter: brightness(1.2);
+                    }
+                }
+
+                &#changeMode {
+                    padding: 0 0.3rem 0 0.5rem;
+                    width: 8rem;
+                    height: 3rem;
+                    align-content: center;
+                    display: flex;
+                    justify-content: center;
+                    border-radius: 1rem;
+                    font-size: 1.2rem;
+                    background-color: darkgray;
+
+                    &:hover {
+                        cursor: pointer;
+                        transition-delay: 0s;
+                        filter: brightness(1.2);
+                    }
+                }
+            }
+        }
+
+        .cipherBlock > div {
+            min-height: 2rem;
+        }
+    }
+}

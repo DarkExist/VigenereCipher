@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Components/Layout/NavMenu.razor.css",
+    "inputFile": "Components/Layout/NavMenu.razor.scss"
+  },
+  {
+    "outputFile": "Components/Pages/ModifiedVigenere.razor.css",
+    "inputFile": "Components/Pages/ModifiedVigenere.razor.scss"
+  }
+]

@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35201.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VigenereCipherApp", "VigenereCipherApp\VigenereCipherApp.csproj", "{116635A2-469D-49E9-A06C-9F7044F5921C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VigenereCipherTests", "VigenereCipherTests\VigenereCipherTests.csproj", "{2BB5F5E4-DCB0-458D-9A08-8DE45277E04A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VigenereCipherFrontend", "VigenereCipherFrontend\VigenereCipherFrontend.csproj", "{D4EDEC0A-EC9B-45CD-8399-99B350369284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VigenereCipherCore", "VigenereCipherCore\VigenereCipherCore.csproj", "{9A4E784F-ECBE-4B52-A0BD-523DE89C5197}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{116635A2-469D-49E9-A06C-9F7044F5921C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116635A2-469D-49E9-A06C-9F7044F5921C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116635A2-469D-49E9-A06C-9F7044F5921C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116635A2-469D-49E9-A06C-9F7044F5921C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BB5F5E4-DCB0-458D-9A08-8DE45277E04A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BB5F5E4-DCB0-458D-9A08-8DE45277E04A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BB5F5E4-DCB0-458D-9A08-8DE45277E04A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BB5F5E4-DCB0-458D-9A08-8DE45277E04A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4EDEC0A-EC9B-45CD-8399-99B350369284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4EDEC0A-EC9B-45CD-8399-99B350369284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4EDEC0A-EC9B-45CD-8399-99B350369284}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D4EDEC0A-EC9B-45CD-8399-99B350369284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4EDEC0A-EC9B-45CD-8399-99B350369284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4EDEC0A-EC9B-45CD-8399-99B350369284}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9A4E784F-ECBE-4B52-A0BD-523DE89C5197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A4E784F-ECBE-4B52-A0BD-523DE89C5197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A4E784F-ECBE-4B52-A0BD-523DE89C5197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A4E784F-ECBE-4B52-A0BD-523DE89C5197}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29D99447-7091-4D2A-B3EF-27661CCDB86D}
+	EndGlobalSection
+EndGlobal
